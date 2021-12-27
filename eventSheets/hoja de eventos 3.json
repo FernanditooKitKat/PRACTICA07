@@ -1,0 +1,31 @@
+{
+	"name": "Hoja de eventos 3",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-value",
+					"objectClass": "ControlDeslizante",
+					"sid": 302607733417927,
+					"parameters": {
+						"comparison": 0,
+						"value": "100"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 541059654358000,
+					"parameters": {
+						"layout": "Escena 1"
+					}
+				}
+			],
+			"sid": 755964040412164
+		}
+	],
+	"sid": 240336110184256
+}

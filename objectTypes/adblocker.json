@@ -1,0 +1,68 @@
+{
+	"name": "Adblocker",
+	"plugin-id": "Sprite",
+	"sid": 868004889405590,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "bound",
+			"name": "RestringidoALaEscena",
+			"sid": 101933828443195
+		},
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direcciones",
+			"sid": 539445535152377
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 403,
+						"height": 405,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2239873,
+						"collisionPoly": {
+							"points": [
+								0.14640198511166252,
+								0.145679012345679,
+								0.5,
+								0,
+								0.8511166253101737,
+								0.145679012345679,
+								0.9975186104218362,
+								0.5,
+								0.8511166253101737,
+								0.8518518518518519,
+								0.5,
+								0.9975308641975309,
+								0.14640198511166252,
+								0.8518518518518519,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 724640913822655,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

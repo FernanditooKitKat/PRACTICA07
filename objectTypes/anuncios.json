@@ -1,0 +1,134 @@
+{
+	"name": "anuncios",
+	"plugin-id": "Sprite",
+	"sid": 540734654223120,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "VIDA",
+			"type": "number",
+			"desc": "",
+			"sid": 615752564331872
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bala",
+			"sid": 731916982953454
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 999,
+						"height": 223,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3674032,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0.5,
+								1,
+								0.0010010010010009784,
+								1,
+								0.0010010010010009784,
+								0.5,
+								0.0010010010010009784,
+								0.004484304932735439,
+								0.5,
+								0.004484304932735439,
+								1,
+								0.004484304932735439,
+								1,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					},
+					{
+						"width": 962,
+						"height": 384,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8380082,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0.5,
+								1,
+								0.0010395010395010118,
+								1,
+								0.0010395010395010118,
+								0.5,
+								0.0010395010395010118,
+								0.0026041666666666297,
+								0.5,
+								0.0026041666666666297,
+								1,
+								0.0026041666666666297,
+								1,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					},
+					{
+						"width": 846,
+						"height": 510,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2280385,
+						"collisionPoly": {
+							"points": [
+								1,
+								1,
+								0.5,
+								1,
+								0.0011820330969266601,
+								1,
+								0.0011820330969266601,
+								0.5,
+								0.0011820330969266601,
+								0.0019607843137254832,
+								0.5,
+								0.0019607843137254832,
+								1,
+								0.0019607843137254832,
+								1,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 259348862804089,
+				"name": "anuncio 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,701 @@
+{
+	"name": "Hoja de eventos 2",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "speedanuncio",
+			"type": "number",
+			"initialValue": "80",
+			"comment": "velocidad de los anuncios",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 195403982573010
+		},
+		{
+			"eventType": "variable",
+			"name": "AnunciosBloqueados",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 186714131767632
+		},
+		{
+			"eventType": "variable",
+			"name": "anunciosDestruidos",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 264068411686213
+		},
+		{
+			"eventType": "variable",
+			"name": "spawnanuncios",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 643306754880136
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 892250722680895
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "anuncios",
+					"sid": 169287533883718,
+					"parameters": {
+						"angle": "random(360,0)"
+					}
+				}
+			],
+			"sid": 852325421109504
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 791351450233106
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Adblocker",
+					"sid": 118833836057988,
+					"parameters": {
+						"x": "Mouse.X",
+						"y": "Mouse.Y"
+					}
+				}
+			],
+			"sid": 459529740669588
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 843921469851470,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Adblocker",
+					"sid": 578209356570486,
+					"parameters": {
+						"object": "Sprite",
+						"layer": "0",
+						"image-point": "1",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "anuncios",
+					"sid": 303035812916725,
+					"behaviorType": "Bala",
+					"parameters": {
+						"speed": "speedanuncio"
+					}
+				}
+			],
+			"sid": 876296905181043
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Sprite",
+					"sid": 721548522130965,
+					"parameters": {
+						"object": "anuncios"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "anuncios",
+					"sid": 580253178272443,
+					"parameters": {
+						"instance-variable": "VIDA",
+						"value": "1"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Sprite",
+					"sid": 304631596966213
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 647932593895627,
+					"parameters": {
+						"variable": "speedanuncio",
+						"value": "5"
+					}
+				}
+			],
+			"sid": 883526880102119
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "anuncios",
+					"sid": 994660210375509,
+					"parameters": {
+						"instance-variable": "VIDA",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "anuncios",
+					"sid": 495890017647007
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 732027977761355,
+					"parameters": {
+						"variable": "AnunciosBloqueados",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "AnunciosBloqueados",
+					"sid": 401632485666187,
+					"parameters": {
+						"text": "anunciosDestruidos"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 330673757974600,
+					"parameters": {
+						"variable": "anunciosDestruidos",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 935832401817825
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-outside-layout",
+					"objectClass": "anuncios",
+					"sid": 458344315976681
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "anuncios",
+					"sid": 947663489107750,
+					"parameters": {
+						"x": "Adblocker.X",
+						"y": "Adblocker.Y"
+					}
+				}
+			],
+			"sid": 172938896403386
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 897138875550429,
+					"parameters": {
+						"object": "anuncios"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 458455785511946,
+					"parameters": {
+						"first-value": "distance(Adblocker.X,Adblocker.Y,anuncios.X,anuncios.Y)",
+						"comparison": 2,
+						"second-value": "200"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "rotate-toward-position",
+					"objectClass": "anuncios",
+					"sid": 922481787579969,
+					"parameters": {
+						"degrees": "1",
+						"x": "Adblocker.X",
+						"y": "Adblocker.Y"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "anuncios",
+					"sid": 995598090861292,
+					"parameters": {
+						"frame-number": "random(1,3)"
+					}
+				}
+			],
+			"sid": 569126289651581
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 226917237523238,
+					"parameters": {
+						"interval-seconds": "spawnanuncios"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object-by-name",
+					"objectClass": "System",
+					"sid": 604088983101102,
+					"parameters": {
+						"object-name": "\"anuncios\"",
+						"layer": "0",
+						"x": "random (1600, 1000)",
+						"y": "random (800, 0)",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "anuncios",
+					"sid": 191032493572354,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 196262098292564,
+					"parameters": {
+						"variable": "spawnanuncios",
+						"value": "0.05"
+					}
+				}
+			],
+			"sid": 694994692280869
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "anuncios",
+					"sid": 603775948725857,
+					"parameters": {
+						"object": "Adblocker"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Adblocker",
+					"sid": 424374707033963
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 742866213844740,
+					"parameters": {
+						"variable": "anunciosDestruidos",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 263463852110605,
+					"parameters": {
+						"variable": "spawnanuncios",
+						"value": "2"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 577040103843380,
+					"parameters": {
+						"variable": "speedanuncio",
+						"value": "80"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "AnunciosBloqueados",
+					"sid": 346093243641894,
+					"parameters": {
+						"text": "anunciosDestruidos"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 369546500074492,
+					"parameters": {
+						"layout": "Escena 3"
+					}
+				}
+			],
+			"sid": 760284574434663
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 723235957308380,
+					"parameters": {
+						"interval-seconds": "5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "anuncios",
+					"sid": 824571612727864,
+					"parameters": {
+						"frame-number": "0"
+					}
+				}
+			],
+			"sid": 582086535804945
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 116754048681057,
+					"parameters": {
+						"interval-seconds": "10"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "anuncios",
+					"sid": 359874782806597,
+					"parameters": {
+						"frame-number": "1"
+					}
+				}
+			],
+			"sid": 571848171199693
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 942468282264791,
+					"parameters": {
+						"interval-seconds": "15"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "anuncios",
+					"sid": 112258380647692,
+					"parameters": {
+						"frame-number": "2"
+					}
+				}
+			],
+			"sid": 925083216648545
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 399941284754640,
+					"parameters": {
+						"variable": "anunciosDestruidos",
+						"comparison": 0,
+						"value": "30"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 870477805672301,
+					"parameters": {
+						"variable": "anunciosDestruidos",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 950700599423506,
+					"parameters": {
+						"variable": "spawnanuncios",
+						"value": "2"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 410418622562925,
+					"parameters": {
+						"variable": "speedanuncio",
+						"value": "80"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "AnunciosBloqueados",
+					"sid": 172628756383803,
+					"parameters": {
+						"text": "anunciosDestruidos"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 288592074055753,
+					"parameters": {
+						"layout": "Escena 4"
+					}
+				}
+			],
+			"sid": 398292715957546
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Sprite",
+					"sid": 977949533595025,
+					"parameters": {
+						"object": "anuncioBueno"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "anuncioBueno",
+					"sid": 594523301308840,
+					"parameters": {
+						"instance-variable": "Vida",
+						"value": "1"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Sprite",
+					"sid": 710585788335342
+				}
+			],
+			"sid": 503866921899708
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "anuncioBueno",
+					"sid": 962645315226348,
+					"parameters": {
+						"instance-variable": "Vida",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Adblocker",
+					"sid": 111178606034808
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 713042253255462,
+					"parameters": {
+						"variable": "anunciosDestruidos",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 303283330527785,
+					"parameters": {
+						"variable": "spawnanuncios",
+						"value": "2"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 759548878214954,
+					"parameters": {
+						"variable": "speedanuncio",
+						"value": "80"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 979542993915583,
+					"parameters": {
+						"layout": "Escena 3"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "AnunciosBloqueados",
+					"sid": 543172317218359,
+					"parameters": {
+						"text": "anunciosDestruidos"
+					}
+				}
+			],
+			"sid": 950874702451646
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-outside-layout",
+					"objectClass": "anuncioBueno",
+					"sid": 741367557679153
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "anuncioBueno",
+					"sid": 368572240538906,
+					"parameters": {
+						"x": "Adblocker.X",
+						"y": "Adblocker.Y"
+					}
+				}
+			],
+			"sid": 821810134016547
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 757537787849441,
+					"parameters": {
+						"object": "anuncioBueno"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997387839645013,
+					"parameters": {
+						"first-value": "distance(Adblocker.X,Adblocker.Y,anuncioBueno.X,anuncioBueno.Y)",
+						"comparison": 2,
+						"second-value": "200"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "rotate-toward-position",
+					"objectClass": "anuncioBueno",
+					"sid": 142664747074858,
+					"parameters": {
+						"degrees": "1",
+						"x": "Adblocker.X",
+						"y": "Adblocker.Y"
+					}
+				}
+			],
+			"sid": 321355653402144
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 813763311825151
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 850737495209508,
+					"parameters": {
+						"object-to-create": "anuncioBueno",
+						"layer": "0",
+						"x": "-1600",
+						"y": "-800",
+						"create-hierarchy": false
+					}
+				}
+			],
+			"sid": 347657189212501
+		}
+	],
+	"sid": 157473661522391
+}
